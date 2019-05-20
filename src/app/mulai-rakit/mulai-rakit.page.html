@@ -1,52 +1,272 @@
 <ion-header>
   <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="home"></ion-back-button>
-          </ion-buttons>
-        <ion-title>
-          Rakit Baru
-        </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Rakit Baru
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-item>
-  Perkiraan PSU (TDP 90%):
-</ion-item>
-<ion-radio-group>
-    <ion-grid>
-        <ion-row>
-          <ion-col>
-           <label>CPU</label>
-          </ion-col>
-          <ion-col>
-            <ion-radio value="intel" checked></ion-radio>
-          <label> Intel</label>
-          </ion-col>
-          <ion-col>
-            <ion-radio value="amd"></ion-radio>
-          <label> AMD</label>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-</ion-radio-group>
-<div class="socket">
-  <label>Socket</label>
-</div>
+  <ion-item>
+    Perkiraan PSU (TDP 90%):
+  </ion-item>
 
-<ion-grid>
-<ion-row>
-  <ion-col size="2" size-sm><ion-button expand="block" color="medium" type="reset"></ion-button></ion-col>
-  <ion-col><ion-button expand="block" color="medium">Pilih CPU</ion-button></ion-col>
-  <ion-col size="2.5" size-sm>
-    <ion-select placeholder="x1">
-        <ion-select-option value="1">x1</ion-select-option>
-        <ion-select-option value="2">x2</ion-select-option>
-        <ion-select-option value="3">x3</ion-select-option>
-        <ion-select-option value="4">x4</ion-select-option>
-  </ion-select>
-</ion-col>
-</ion-row>
-</ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('proc')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="procSelected" placeholder="Pilih Prosesor">
+        <ion-select-option *ngFor="let dt of dataproc" [value]="dt">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="procValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('vga')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="vgaSelected" placeholder="Pilih VGA">
+        <ion-select-option *ngFor="let dt of datavga" [value]="dt">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="vgaValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('mobo')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="moboSelected" placeholder="Pilih Motherboard">
+        <ion-select-option *ngFor="let dt of datamobo" [value]="dt">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="moboValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('ram')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="ramSelected" placeholder="Pilih RAM">
+        <ion-select-option *ngFor="let dt of dataram" [value]="dt">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="ramValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('ssd')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="ssdSelected" placeholder="Pilih SSD">
+        <ion-select-option *ngFor="let dt of datassd" [value]="dt">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="ssdValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('hdd')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="hddSelected" placeholder="Pilih HDD">
+        <ion-select-option *ngFor="let dt of datahdd" [value]="dt">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="hddValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('cooler')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="coolerSelected" placeholder="Pilih Cooler">
+        <ion-select-option *ngFor="let dt of datacooler" [value]="dt">{{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="coolerValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('fan')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="fanSelected" placeholder="Pilih Fan Case">
+        <ion-select-option *ngFor="let dt of datafan" [value]="dt">{{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="fanValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('psu')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="psuSelected" placeholder="Pilih PSU">
+        <ion-select-option *ngFor="let dt of datapsu" [value]="dt">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="psuValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('casing')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="casingSelected" placeholder="Pilih casing">
+        <ion-select-option *ngFor="let dt of datacasing" [value]="dt">{{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="casingValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('keyboard')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="keyboardSelected" placeholder="Pilih Keyboard">
+        <ion-select-option *ngFor="let dt of datakeyboard" [value]="dt">{{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="keyboardValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('mouse')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="mouseSelected" placeholder="Pilih MOuse">
+        <ion-select-option *ngFor="let dt of datamouse" [value]="dt">{{ dt.name }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="mouseValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1.7" size-sm>
+        <ion-button expand="block" color="medium" type="reset" (click)="reset('monitor')">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-select [(ngModel)]="monitorSelected" placeholder="Pilih Monitor">
+        <ion-select-option *ngFor="let dt of datamonitor" [value]="dt">{{ dt.brand }}</ion-select-option>
+      </ion-select>
+      <ion-col size="2.5" size-sm>
+        <ion-select [(ngModel)]="monitorValue" placeholder="x1">
+          <ion-select-option value="1">x1</ion-select-option>
+          <ion-select-option value="2">x2</ion-select-option>
+          <ion-select-option value="3">x3</ion-select-option>
+          <ion-select-option value="4">x4</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+
+    <p>Rp. {{ total }}</p>
+    <p><ion-button expand="block" color="medium" (click)="printlog()">TOTAL</ion-button></p>
+    <p><ion-button expand="block" color="medium" (click)="addToRakit()">save</ion-button></p>
+    
+  </ion-grid>
 
 </ion-content>

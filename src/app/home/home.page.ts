@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { MulaiRakitPage } from '../mulai-rakit/mulai-rakit.page';
+//import { NavController } from '@ionic/angular';
+//import { MulaiRakitPage } from '../mulai-rakit/mulai-rakit.page';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -17,5 +17,9 @@ export class HomePage {
   mulaiRakit(){
     console.log("clicked")
     this.router.navigate(['mulai-rakit'])
+  }
+  daftarRakit(){
+    console.log("clicked")
+    this.router.navigate(['daftarrakit'])
   }
 }

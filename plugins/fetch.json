@@ -1,0 +1,50 @@
+{
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage@3.2.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "com.moust.cordova.videoplayer": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/moust/cordova-plugin-videoplayer.git"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-videoplayer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-videoplayer"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-youtube-video-player": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-youtube-video-player"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ionic-webview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-webview@^4.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-inappbrowser": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-inappbrowser@3.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

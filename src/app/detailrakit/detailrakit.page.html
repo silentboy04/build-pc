@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="daftarrakit"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detail Rakit
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let data of rakit.dataRakit" >
+      <ion-label>Rakitan</ion-label><p>Rp{{ data.totalHarga }}</p>
+    <ion-item>
+      <p>TDP : {{ data.totalTdp }}</p>
+    </ion-item>
+    <ion-button href="/detailrakit">Detail</ion-button>
+</ion-card>
+</ion-content>

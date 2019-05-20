@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { HttpModule } from '@angular/http';
   ],
   entryComponents: [
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpModule, FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpModule, FormsModule, IonicStorageModule.forRoot()], //<-- ini bukan?
   providers: [
     StatusBar,
     SplashScreen,

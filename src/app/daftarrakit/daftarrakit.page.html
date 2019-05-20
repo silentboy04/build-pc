@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Daftar Rakit
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let data of rakit.dataRakit" >
+      
+      <ion-item>
+        <ion-label>Rakitan</ion-label><p>Rp{{ data.totalHarga }}</p><br>
+      </ion-item>
+      <ion-item>
+        <p>TDP : {{ data.totalTdp }}</p>
+      </ion-item>
+      <ion-button href="/detailrakit">Detail</ion-button>
+  </ion-card>
+<!--
+<ion-item>
+        <p>Prosesor : {{data.data[0].name}}</p><br>
+        <img src="https://buildpc.herokuapp.com/api/upload/image/{{data.data[1].vgaimage}}" alt="">
+      </ion-item>
+-->
+</ion-content>

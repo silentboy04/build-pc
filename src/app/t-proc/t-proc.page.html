@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Processor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-select [(ngModel)]="categorySelected" (ionChange)="loadproc()" placeholder="Select One">
+      <ion-select-option *ngFor="let dt of data" value="1">{{ dt.brand }} {{ dt.name }}</ion-select-option>
+  </ion-select>
+</ion-content>
